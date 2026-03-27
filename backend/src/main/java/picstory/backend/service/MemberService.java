@@ -65,4 +65,20 @@ public class MemberService {
         Member member = findById(id);
         member.changeStatus(MemberStatus.DELETED);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
