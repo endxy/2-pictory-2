@@ -2,7 +2,9 @@ import PostHeader from '@/components/posts/PostHeader'
 import PostList from '@/components/posts/PostList'
 import TagFilterBar from '@/components/posts/TagFilterBar'
 import Button from '@/components/ui/Button'
+import Input from '@/components/ui/Input'
 import { useState } from 'react'
+import './PostPagesAll.scss'
 const PostDashboard = () => {
 
     const [selectedTag, setSelectedTag] = useState('전체')
@@ -65,6 +67,13 @@ const PostDashboard = () => {
         <section className='page post-section'>
             <div className="inner">
                 <PostHeader onCreate={handleCreatePost} />
+                <div className="input-post">
+                    <Input
+                    placeholder="게시글 제목 또는 내용을 검색하세요"
+                    value={searchKeyword}
+                    onChange={(e)=>setSearchKeyword(e.target.value)}
+                    />
+                </div>
                 <div className="tags-wrapper">
 
                     <TagFilterBar
