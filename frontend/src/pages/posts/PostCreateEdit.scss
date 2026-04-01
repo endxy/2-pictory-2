@@ -70,6 +70,7 @@
                 padding:  $space-md;
                 border-radius: $r-sm;
                 background-color: $gray-50;
+
                 .post-upload-placeholder{
                     display: flex;
                     flex-direction: column;
@@ -77,6 +78,9 @@
                     text-align: center;
                     gap: $space-md;
                     cursor: pointer;
+                    .post-uppload-input {
+                        display: none;
+                    }
                     .post-upload-title{
                         font-size: $text-md;
                         font-weight: $fw-medium;

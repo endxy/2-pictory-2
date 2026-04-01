@@ -10,7 +10,7 @@ const PostCreate = () => {
   return (
     <section className='page post-section post-create'>
       <div className="inner">
-        <form action="">
+        <form action="" className='post-form'>
           <div className="post-card">
             <div className="post-field">
               <label className='post-label'>카테고리</label>
@@ -34,8 +34,15 @@ const PostCreate = () => {
 
               <div className="tags">
                 <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
+                <PostTag tag="tag1" />
                 <input type="text" className='post-tag-input' placeholder='tag를 자유롭게 입력하세요' />
-                <Button type="button" text="+태그 추가" className="post-tag-add" />
+                <Button type="button" text="+ 태그 추가" className="post-tag-add" />
               </div>
             </div>
             <div className="post-field">
@@ -45,12 +52,15 @@ const PostCreate = () => {
               </div>
             </div>
             <div className="post-upload-card">
+              <div className="post-upload-placeholder">
+
               <input type="file" accept='image/*' className='post-uppload-input' />
               <img src="" alt="img" />
               <p className='post-upload-title'>이미지를 업로드 하세요</p>
               <span className="post-upload-desc">
                 클릭하거나 파일을 드래그 하여 업로드
               </span>
+              </div>
             </div>
 
             <div className="post-actions">
