@@ -6,7 +6,63 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import { CATEGORY_OPTIONS } from '@/constants/category'
 import PostTag from '@/components/posts/PostTag'
+import {createPost} from '@/api/post.api'
 const PostCreate = () => {
+
+
+  const navigate = useNavigate()
+
+  const [category, setCategory]=useState('DAILY')
+  const [title, setTitle]=useState('')
+  const [content, setContent]=useState('')
+  const [tags, setTags]=useState([
+    {label:'기본값'},
+    {label:'추가 태그'}
+  ])
+  const fileInputRef = useRef(null)
+  const [tagInput, setTagInput]=useState('')
+  const [isAddingTag, setIsAddingTag]=useState(false)
+  const [isSaving, setIsSaving]=useState(false)
+  const [imageUrl, setImageUrl]=useState(null)
+
+  const handleSave = async(e)=>{
+  e.preventDefault()
+  if(!title.trim()){
+    alert('제목을 입력하세요')
+    return
+  }
+  if(!content.trim()){
+    alert('내용을 입력하세요')
+    return
+  }
+
+  try {
+    setIsSaving(true)
+
+    const payload = {
+      category,
+      title,
+      content
+    }
+
+    const res = await createPost(payload)
+    console.log(res)
+
+    navigate('/app')
+
+  } catch (error) {
+    
+    console.error('메세지 저장 실패',error)
+  }finally{
+    setIsSaving(false)
+  }
+
+}
+
+  const handleGoBack = () =>{
+    navigate(-1)
+  }
+
   return (
     <section className='page post-section post-create'>
       <div className="inner">
