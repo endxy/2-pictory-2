@@ -61,11 +61,13 @@
     &.save {
         background-color: $success;
     }
-    &.back.bl {
+    &.back,
+    &.bl {
         color:$gray-900
     }
     &.edit {
         background-color: $warning;
     }
     
+
 }
