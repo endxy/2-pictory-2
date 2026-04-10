@@ -68,5 +68,27 @@
         }
     }
 
-    
+    &.profile-base{
+        display: flex;
+        flex-direction: column;
+        gap: $space-md;
+
+        label {
+            display: flex;
+            gap: $space-md;
+            flex:1
+        }
+        .input-field{
+            background-color: $gray-50;
+            color:$gray-700;
+            border-radius: $r-xs;
+            border: 1px solid $gray-200;
+        }
+        .btn-wrap {
+            display: flex;
+            gap: $space-md;
+            justify-content: flex-end;
+        }
+
+    }
 }
