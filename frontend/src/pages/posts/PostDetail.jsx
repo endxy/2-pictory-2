@@ -37,13 +37,13 @@ const PostDetail = () => {
   if (loading) return <div>로딩중</div>
   if (!post) return <div>데이터 없음</div>
 
-  const handlePostDelete =async()=>{
-    if(confirm('게시글을 정말 삭제하시겠습니까?')){
+  const handlePostDelete = async () => {
+    if (confirm('게시글을 정말 삭제하시겠습니까?')) {
       try {
         await deletePost(id)
-        navigate('/app',{replace:true})
+        navigate('/app', { replace: true })
       } catch (error) {
-        console.error('게시글 삭제 오류',error)
+        console.error('게시글 삭제 오류', error)
       }
     }
   }
@@ -60,38 +60,43 @@ const PostDetail = () => {
           buttonClass="back bl"
         />
         <div className="post-main">
-          <div className="post-card-body">
-            <p className="post-card-category">
-              {post.category}
-            </p>
-            <h4 className="post-card-title">
-              {post.title}
-            </h4>
-            <p className="post-card-content">
-              {post.content}
-            </p>
+          <article className='post-card'>
 
-            <div className="tags">
-              <PostTag tag="tag1"/>
-              <PostTag tag="tag2"/>
-              <PostTag tag="tag3"/>
+            <div className="post-card-body">
+              <p className="post-card-category">
+                {post.category}
+              </p>
+              <h4 className="post-card-title">
+                {post.title}
+              </h4>
+              <p className="post-card-content">
+                {post.content}
+              </p>
+
+              <div className="tags">
+                {(post.tags||[]).map((tag,i)=>(
+
+                <PostTag tag={tag} key={i} />
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="img-wrap">
-            <img src="/images.png" alt="image" />
-          </div>
+            <div className="img-wrap">
+              <img src={post.imageUrl} alt="image" />
+            </div>
+          </article>
+
         </div>
         <div className="btn-wrap">
-          <Button 
-          text="게시글 삭제하기" 
-          className="delete bl"
-          onClick={handlePostDelete}
-          icons/>
-          <Button 
-          text="게시글 수정하기" 
-          className="edit bl"
-          onClick={()=>{navigate(`/app/posts/${id}/edit`)}}
-          icons/>
+          <Button
+            text="게시글 삭제하기"
+            className="delete bl"
+            onClick={handlePostDelete}
+            icons />
+          <Button
+            text="게시글 수정하기"
+            className="edit bl"
+            onClick={() => { navigate(`/app/posts/${id}/edit`) }}
+            icons />
         </div>
       </div>
     </section>
